@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab1.CalculatorPage"
+             BindingContext="x:Reference CalculatorPage"
+             Shell.NavBarIsVisible="false">
+
+    <Grid RowDefinitions="Auto,Auto,*,12*"
+          Padding="5"
+          Margin="0,10,0,0"
+          RowSpacing="5"
+          ColumnSpacing="5"
+          VerticalOptions="Fill">
+
+        <Label Grid.Row="0"
+               x:Name="HistoryLabel"
+               FontSize="16"
+               LineBreakMode="NoWrap"
+               HorizontalTextAlignment="End"
+               Text="" />
+
+        <Entry Grid.Row="1"
+               x:Name="NumberEntry"
+               FontSize="48"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="End"
+               IsReadOnly="True"
+               Text="" />
+
+        <Grid Grid.Row="2"
+              ColumnDefinitions="*,*,*,*,*"
+              RowSpacing="5">
+
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="Transparent" />
+                    <Setter Property="TextColor" Value="{StaticResource SecondaryDarkText}" />
+                    <Setter Property="CornerRadius" Value="0" />
+                    <Setter Property="Margin" Value="2" />
+                    <Setter Property="BorderWidth" Value="0" />
+                    <Setter Property="BorderColor" Value="Transparent" />
+                    <Setter Property="VisualStateManager.VisualStateGroups">
+                        <VisualStateGroupList>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity" Value="0.6" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                                <VisualState x:Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity" Value="0.7" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                                <VisualState x:Name="Disabled">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity" Value="0.2" />
+                                        <Setter Property="TextColor" Value="{StaticResource SecondaryDarkText}" />
+                                        <Setter Property="BackgroundColor" Value="Transparent" />
+                                        <Setter Property="BorderColor" Value="Transparent" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateGroupList>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+
+            <Button
+                x:Name="MemoryClearButton"
+                Grid.Column="0"
+                IsEnabled="False"
+                Text="MC"
+                Clicked="OnMemoryClearButtonClicked" />
+            <Button
+                x:Name="MemoryRecallButton"
+                Grid.Column="1"
+                IsEnabled="False"
+                Text="MR"
+                Clicked="OnMemoryRecallButtonClicked" />
+            <Button
+                x:Name="MemorySubtractButton"
+                Grid.Column="2"
+                IsEnabled="False"
+                Text="M-"
+                Clicked="OnMemorySubtractButtonClicked" />
+            <Button
+                x:Name="MemoryAddButton"
+                Grid.Column="3"
+                IsEnabled="False"
+                Text="M+"
+                Clicked="OnMemoryAddButtonClicked" />
+            <Button
+                Grid.Column="4"
+                Text="MS"
+                Clicked="OnMemoryStoreButtonClicked" />
+        </Grid>
+
+        <Grid Grid.Row="3"
+              ColumnDefinitions="*,*,*,*"
+              RowDefinitions="*,*,*,*,*,*"
+              RowSpacing="0"
+              ColumnSpacing="0">
+
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="{StaticResource PrimaryDark}" />
+                    <Setter Property="TextColor" Value="{StaticResource Gray900}" />
+                    <Setter Property="CornerRadius" Value="4" />
+                    <Setter Property="Margin" Value="2" />
+                    <Setter Property="VisualStateManager.VisualStateGroups">
+                        <VisualStateGroupList>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity" Value="0.6" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                                <VisualState x:Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity" Value="0.7" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                                <VisualState x:Name="Disabled">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity" Value="0.2" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateGroupList>
+                    </Setter>
+                </Style>
+
+                <Style x:Key="NumberButtonStyle" TargetType="Button">
+                    <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
+                    <Setter Property="TextColor" Value="{StaticResource PrimaryDarkText}" />
+                    <Setter Property="CornerRadius" Value="4" />
+                    <Setter Property="Margin" Value="2" />
+                    <Setter Property="VisualStateManager.VisualStateGroups">
+                        <VisualStateGroupList>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Pressed">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity" Value="0.6" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                                <VisualState x:Name="PointerOver">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity" Value="0.7" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                                <VisualState x:Name="Disabled">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity" Value="0.2" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateGroupList>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+
+            <Button Grid.Row="0" Grid.Column="0" Text="%"
+                    Clicked="OnOperatorButtonClicked" />
+            <Button Grid.Row="0" Grid.Column="1" Text="CE"
+                    Clicked="OnClearEntryButtonClicked" />
+            <Button Grid.Row="0" Grid.Column="2" Text="C"
+                    Clicked="OnClearButtonClicked" />
+            <Button Grid.Row="0" Grid.Column="3" Text="⌫"
+                    Clicked="OnBackspaceButtonClicked" />
+
+            <Button Grid.Row="1" Grid.Column="0" Text="1/x"
+                    Clicked="OnOperatorButtonClicked" />
+            <Button Grid.Row="1" Grid.Column="1" Text="x²"
+                    Clicked="OnOperatorButtonClicked" />
+            <Button Grid.Row="1" Grid.Column="2" Text="√x"
+                    Clicked="OnOperatorButtonClicked" />
+            <Button Grid.Row="1" Grid.Column="3" Text="÷"
+                    Clicked="OnOperatorButtonClicked" />
+
+            <Button Grid.Row="2" Grid.Column="0" Text="7"
+                    Style="{StaticResource NumberButtonStyle}"
+                    Clicked="OnNumberButtonClicked" />
+            <Button Grid.Row="2" Grid.Column="1" Text="8"
+                    Style="{StaticResource NumberButtonStyle}"
+                    Clicked="OnNumberButtonClicked" />
+            <Button Grid.Row="2" Grid.Column="2" Text="9"
+                    Style="{StaticResource NumberButtonStyle}"
+                    Clicked="OnNumberButtonClicked" />
+            <Button Grid.Row="2" Grid.Column="3" Text="×"
+                    Clicked="OnOperatorButtonClicked" />
+
+            <Button Grid.Row="3" Grid.Column="0" Text="4"
+                    Style="{StaticResource NumberButtonStyle}"
+                    Clicked="OnNumberButtonClicked" />
+            <Button Grid.Row="3" Grid.Column="1" Text="5"
+                    Style="{StaticResource NumberButtonStyle}"
+                    Clicked="OnNumberButtonClicked" />
+            <Button Grid.Row="3" Grid.Column="2" Text="6"
+                    Style="{StaticResource NumberButtonStyle}"
+                    Clicked="OnNumberButtonClicked" />
+            <Button Grid.Row="3" Grid.Column="3" Text="-"
+                    Clicked="OnOperatorButtonClicked" />
+
+            <Button Grid.Row="4" Grid.Column="0" Text="1"
+                    Style="{StaticResource NumberButtonStyle}"
+                    Clicked="OnNumberButtonClicked" />
+            <Button Grid.Row="4" Grid.Column="1" Text="2"
+                    Style="{StaticResource NumberButtonStyle}"
+                    Clicked="OnNumberButtonClicked" />
+            <Button Grid.Row="4" Grid.Column="2" Text="3"
+                    Style="{StaticResource NumberButtonStyle}"
+                    Clicked="OnNumberButtonClicked" />
+            <Button Grid.Row="4" Grid.Column="3" Text="+"
+                    Clicked="OnOperatorButtonClicked" />
+
+            <Button Grid.Row="5" Grid.Column="0" Text="+/-"
+                    Style="{StaticResource NumberButtonStyle}"
+                    Clicked="OnSignChangeButtonClicked" />
+            <Button Grid.Row="5" Grid.Column="1" Text="0"
+                    Style="{StaticResource NumberButtonStyle}"
+                    Clicked="OnNumberButtonClicked" />
+            <Button Grid.Row="5" Grid.Column="2" Text="."
+                    Style="{StaticResource NumberButtonStyle}"
+                    Clicked="OnPointButtonClicked" />
+            <Button Grid.Row="5" Grid.Column="3" Text="="
+                    Clicked="OnEqualsButtonClicked" />
+        </Grid>
+
+    </Grid>
+
+</ContentPage>
