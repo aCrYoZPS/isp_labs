@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab1.IntegralPage"
+             Title="IntegralPage"
+             Shell.NavBarIsVisible="false">
+    <Grid RowDefinitions="Auto,*,Auto"
+          ColumnDefinitions="*,Auto">
+        <Label Grid.Row="0"
+                Grid.Column="0"
+                Grid.RowSpan="2"
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <ProgressBar Grid.Row="1"
+                     Grid.Column="0"
+                     Progress="100"/>
+        <Label Grid.Row="1"
+               Grid.Column="1"
+               Text="%"/>
+        <Button Grid.Row="2"
+                Grid.RowSpan="2"
+                Text="Start"/>
+    </Grid>
+</ContentPage>

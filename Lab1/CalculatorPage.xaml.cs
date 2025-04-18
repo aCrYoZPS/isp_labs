@@ -13,6 +13,7 @@ public partial class CalculatorPage : ContentPage
     private OperationType operationCache = OperationType.None;
     private bool isAnswer = false;
     private bool isAfterOperation = true;
+    private bool isEqualsClicked = false;
 
     public CalculatorPage()
     {
@@ -23,6 +24,13 @@ public partial class CalculatorPage : ContentPage
     {
         if (NumberEntry.Text == "0" || isAnswer || isAfterOperation)
         {
+            if (isEqualsClicked)
+            {
+                operand1 = null;
+                operand2 = null;
+                isEqualsClicked = false;
+            }
+
             NumberEntry.Text = (sender as Button)?.Text!;
             isAnswer = false;
             isAfterOperation = false;
@@ -212,6 +220,7 @@ public partial class CalculatorPage : ContentPage
         }
 
         CalculateResult();
+        isEqualsClicked = true;
     }
 
 

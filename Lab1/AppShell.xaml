@@ -12,4 +12,8 @@
         ContentTemplate="{DataTemplate lab1:CalculatorPage}"
         Route="Calculator" />
 
+    <ShellContent
+           Title="Integral"
+        ContentTemplate="{DataTemplate lab1:IntegralPage}"
+        Route="Integral" />
 </Shell>
