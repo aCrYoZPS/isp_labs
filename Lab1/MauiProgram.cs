@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Lab1.Services;
+using Microsoft.Extensions.Logging;
 
 namespace Lab1
 {
@@ -15,8 +16,13 @@ namespace Lab1
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            var services = builder.Services;
+            services.AddTransient<IDbService, SQLiteService>();
+            services.AddHttpClient<IRateService, RateService>(opt =>
+                opt.BaseAddress = new Uri("https://www.nbrb.by/api/exrates/rates"));
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

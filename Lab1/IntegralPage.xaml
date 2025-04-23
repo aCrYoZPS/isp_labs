@@ -1,25 +1,42 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Lab1.IntegralPage"
              Title="IntegralPage"
              Shell.NavBarIsVisible="false">
-    <Grid RowDefinitions="Auto,*,Auto"
-          ColumnDefinitions="*,Auto">
-        <Label Grid.Row="0"
-                Grid.Column="0"
-                Grid.RowSpan="2"
+    <Grid RowDefinitions="Auto,*,Auto">
+        <Label
+            x:Name="InfoLabel"
+            Grid.Row="0"
             Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
+            VerticalOptions="Center"
             HorizontalOptions="Center" />
-        <ProgressBar Grid.Row="1"
-                     Grid.Column="0"
-                     Progress="100"/>
-        <Label Grid.Row="1"
-               Grid.Column="1"
-               Text="%"/>
-        <Button Grid.Row="2"
-                Grid.RowSpan="2"
-                Text="Start"/>
+
+        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+            <ProgressBar
+                x:Name="WorkProgressBar"
+                Progress="0"
+                ProgressColor="{StaticResource PrimaryDark}"
+                WidthRequest="200" />
+            <Label
+                x:Name="PercentageLabel"
+                Text="0%"
+                Margin="10, 0, 0, 0"
+                VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Grid.Row="2" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+            <Button
+                Text="Start"
+                Clicked="OnStartButtonClicked"
+                MinimumWidthRequest="100"
+                Style="{StaticResource DefaultButtonStyle}" />
+            <Button
+                Text="Cancel"
+                Clicked="OnStopButtonClicked"
+                MinimumWidthRequest="100"
+                Style="{StaticResource DefaultButtonStyle}" />
+        </HorizontalStackLayout>
     </Grid>
 </ContentPage>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab1.SQLitePage"
+             xmlns:entities="using:Lab1.Entities"
+             Title="SQLitePage"
+             Shell.NavBarIsVisible="False"
+             Loaded="OnSQLitePageLoaded">
+    <Grid RowDefinitions="Auto,*">
+        <Picker
+            Grid.Row="0"
+            x:Name="WardPicker"
+            SelectedIndexChanged="WardPickerOnSelectedIndexChanged"
+            ItemDisplayBinding="{Binding Number}" x:DataType="entities:Ward" />
+
+        <CollectionView
+            Grid.Row="1"
+            x:Name="PatientCollectionView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                        ColumnDefinitions="*,*,*"
+                        Padding="10" ColumnSpacing="10" RowSpacing="5">
+                        <Label Grid.Column="0" Text="{Binding Name}" FontAttributes="Bold" FontSize="14" />
+                        <Label Grid.Column="1" Text="{Binding BirthDate}" FontSize="12" />
+                        <Label Grid.Column="2" Text="{Binding Id}" FontSize="12" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab1.CurrencyPage"
+             Appearing="CurrencyPageOnAppearing">
+    <VerticalStackLayout>
+        <Grid
+            RowDefinitions="Auto,Auto,Auto,Auto"
+            ColumnDefinitions="*,Auto">
+            <Entry
+                Grid.Row="0" Grid.Column="0"
+                x:Name="BynEntry"
+                TextChanged="OnBynEntryTextChanged"
+                Placeholder="Amount in BYN"
+                HorizontalOptions="StartAndExpand" />
+            <Label
+                Grid.Row="0" Grid.Column="1"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Text="BYN" />
+            <Entry
+                Grid.Row="1" Grid.Column="0"
+                x:Name="CurrencyEntry1"
+                TextChanged="OnCurrencyEntry1TextChanged"
+                Placeholder="Amount in currency"
+                HorizontalOptions="StartAndExpand" />
+            <Picker
+                Grid.Row="1" Grid.Column="1"
+                x:Name="CurrencyPicker1"
+                ItemDisplayBinding="{Binding CurAbbreviation}" />
+            <Entry
+                Grid.Row="2" Grid.Column="0"
+                x:Name="CurrencyEntry2"
+                TextChanged="OnCurrencyEntry2TextChanged"
+                Placeholder="Amount in currency"
+                HorizontalOptions="StartAndExpand" />
+            <Picker
+                Grid.Row="2" Grid.Column="1"
+                x:Name="CurrencyPicker2"
+                ItemDisplayBinding="{Binding CurAbbreviation}" />
+            <Entry
+                Grid.Row="3" Grid.Column="0"
+                x:Name="CurrencyEntry3"
+                TextChanged="OnCurrencyEntry3TextChanged"
+                Placeholder="Amount in currency"
+                HorizontalOptions="StartAndExpand" />
+            <Picker
+                Grid.Row="3" Grid.Column="1"
+                x:Name="CurrencyPicker3"
+                ItemDisplayBinding="{Binding CurAbbreviation}" />
+        </Grid>
+        <Button
+            Text="↻"
+            Clicked="OnRefreshButtonClicked"
+            HorizontalOptions="Fill"
+            Style="{StaticResource DefaultButtonStyle}" />
+    </VerticalStackLayout>
+</ContentPage>

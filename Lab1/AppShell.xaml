@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <Shell
     x:Class="Lab1.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:lab1="clr-namespace:Lab1"
-    Shell.FlyoutBehavior="Flyout"
     Title="MAUI Labs">
+
+    <ShellContent
+        Title="Currency"
+        ContentTemplate="{DataTemplate lab1:CurrencyPage}"
+        Route="Currency" />
+
+    <ShellContent
+        Title="SQLite"
+        ContentTemplate="{DataTemplate lab1:SQLitePage}"
+        Route="SQLite" />
+
+    <ShellContent
+        Title="Integral"
+        ContentTemplate="{DataTemplate lab1:IntegralPage}"
+        Route="Integral" />
 
     <ShellContent
         Title="Calculator"
         ContentTemplate="{DataTemplate lab1:CalculatorPage}"
         Route="Calculator" />
 
-    <ShellContent
-           Title="Integral"
-        ContentTemplate="{DataTemplate lab1:IntegralPage}"
-        Route="Integral" />
 </Shell>
